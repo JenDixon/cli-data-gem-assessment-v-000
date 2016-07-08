@@ -1,0 +1,25 @@
+- a command line interface that at minimum lists my medium feed and gives access to the actual stories
+
+ex: > medium-well
+
+What would you like to read?
+
+1. Stuff that matters by Tim O'Reilly in Code for America Blog
+2. How to Build a Neuron by Eric Elliott in JavaScript Scene
+
+> 1
+
+“Stuff that Matters” Design Challenge: 120 probation officers sharing one iPhone
+I’ve spent many years encouraging the technology industry to work on stuff that matters. Not only do we need to tackle the big problems that face our society, but working on these problems pushes us to think harder, be more creative, and grow. etc ...
+
+
+> finished
+
+What would you like to read?
+
+1. Stuff that matters by Tim O'Reilly in Code for America Blog
+2. How to Build a Neuron by Eric Elliott in JavaScript Scene
+
+> exit
+
+Hope you found the feed interesting.
