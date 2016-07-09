@@ -6,10 +6,10 @@ class MediumWell::CLI
 	end
 
 	def list_stories
-		puts <<-DOC
-1. Stuff that matters by Tim O'Reilly in Code for America Blog
-2. How to Build a Neuron by Eric Elliott in JavaScript Scene
-		DOC
+		@posts = MediumWell::Post.latest
+		@posts.each.with_index(1) do |post, i|
+			puts "#{i}. #{post.title} by #{post.author} with #{post.recommendations} recommendations"
+		end
 	end
 
 	def menu
@@ -18,15 +18,20 @@ class MediumWell::CLI
 		while input != "exit"
 			list_stories
 			input = gets.strip.downcase
-			case input
-			when "1"
-				puts "Story about 1"
-			when "2"
-				puts "Story about 2"
-			when "finished"
-				list_stories
-			when "exit"
-				puts "Goodbye"
+			# case input
+			# when "1"
+			# 	puts "Story about 1"
+			# when "2"
+			# 	puts "Story about 2"
+			# when "finished"
+			# 	list_stories
+			# when "exit"
+			# 	puts "Goodbye"
+			if input.to_i > 0
+				the_post = @posts[input.to_i - 1]
+				puts "#{the_post.title} by #{the_post.author} with #{the_post.recommendations} recommendations"
+			else
+				puts "This selection is not available. Enter a number or exit."
 			end
 		end
 	end
