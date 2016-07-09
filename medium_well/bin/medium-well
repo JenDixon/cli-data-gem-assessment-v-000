@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/medium_well'
+
+MediumWell::CLI.new.call
