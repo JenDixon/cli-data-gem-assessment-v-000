@@ -23,4 +23,8 @@ class MediumWell::Post
   def self.all
     @@all
   end
+
+  def self.all_sorted
+    @@all.sort! { |a,b| a.recommendations <=> b.recommendations }
+  end
 end
