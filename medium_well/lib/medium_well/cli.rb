@@ -5,12 +5,12 @@ class MediumWell::CLI
 
 	def call
 		scraper.make_posts
-		puts "Today's Stories"
 		list_posts
 		menu
 	end
 
 	def list_posts
+		puts "Today's Stories"
 		self.print_posts
 	end
 
@@ -21,7 +21,7 @@ class MediumWell::CLI
 	def print_posts
 		MediumWell::Post.all.each.with_index(1) do |post, i|
 			puts "\n"
-			puts "#{i}. #{post.title} by #{post.author} with #{post.recommendations} recommendations"
+			puts "#{i}. #{post.title} by #{post.author} with #{post.recommendations ? post.recommendations : "0"} recommendations"
 		end
 	end
 
