@@ -31,7 +31,7 @@ class MediumWell::CLI
 			elsif valid_string?(input)
 				puts "This is not a valid entry. Please enter a number or exit"
 			else
-				puts "Goodbye"
+				puts "Hope you found it enlightening. Goodbye"
 			end
 		end
 	end
@@ -53,7 +53,7 @@ class MediumWell::CLI
 	end
 
 	def sorted_posts
-		MediumWell::Post.all.sort { |a,b| a.recommendations.to_i <=> b.recommendations.to_i }
+		MediumWell::Post.all.sort { |a,b| b.recommendations.to_i <=> a.recommendations.to_i }
 	end
 
 	def print_posts(post_input)
