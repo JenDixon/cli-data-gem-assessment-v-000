@@ -16,6 +16,9 @@ class MediumWell::Scraper
 
   def get_post_story(post)
     story = Nokogiri::HTML(open(post.url))
-    puts story.css(".section-inner p").text
+    paras = story.css(".section-inner p")
+    paras.each do |para|
+      puts "\n #{para.text}"
+    end
   end
 end
