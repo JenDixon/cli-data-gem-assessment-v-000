@@ -30,15 +30,21 @@ class MediumWell::CLI
 		input = nil
 		while input != "exit"
 			input = gets.strip.downcase
-			if input.to_i > 0
+			if input =~ /[0-9]+/ && input.to_i > 0
 				the_post = MediumWell::Post.all[input.to_i - 1]
 				puts "#{the_post.title}\n"
 				print_post(the_post)
-			elsif input == "list posts"
-				list_posts
+
+				choose_again
+			elsif input.is_a?(String) && input !="exit"
+				puts "This is not a valid entry. Please enter a number or exit"
 			else
-				puts "This selection is not available. Enter a number, list post or exit."
+				puts "Goodbye"
 			end
 		end
+	end
+
+	def choose_again
+		puts "\nEnter a number for another post or exit"
 	end
 end
