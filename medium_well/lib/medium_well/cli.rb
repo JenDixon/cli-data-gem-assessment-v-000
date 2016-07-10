@@ -1,8 +1,12 @@
 class MediumWell::CLI
+	def scraper
+		MediumWell::Scraper.new
+	end
+
 	def call
-		MediumWell::Scraper.new.make_posts
+		scraper.make_posts
 		puts "Today's Stories"
-		list_stories
+		list_posts
 		menu
 	end
 
@@ -11,9 +15,7 @@ class MediumWell::CLI
 	end
 
 	def print_post(post)
-		puts "\n"
-		puts "#{i}. #{post.title} by #{post.author} with #{post.recommendations} recommendations"
-		puts "\n"
+		scraper.get_post_story(post)
 	end
 
 	def print_posts
@@ -30,8 +32,9 @@ class MediumWell::CLI
 			input = gets.strip.downcase
 			if input.to_i > 0
 				the_post = MediumWell::Post.all[input.to_i - 1]
-				puts "#{the_post.title} by #{the_post.author} with #{the_post.recommendations} recommendations"
-			elsif input = "list posts"
+				puts "#{the_post.title}\n"
+				print_post(the_post)
+			elsif input == "list posts"
 				list_posts
 			else
 				puts "This selection is not available. Enter a number, list post or exit."

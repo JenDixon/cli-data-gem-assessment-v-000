@@ -13,4 +13,9 @@ class MediumWell::Scraper
       MediumWell::Post.new_post(post)
     end
   end
+
+  def get_post_story(post)
+    story = Nokogiri::HTML(open(post.url))
+    puts story.css(".section-inner p").text
+  end
 end

@@ -14,7 +14,7 @@ class MediumWell::Post
   def self.new_post(post)
     self.new(
       post.css("h3").text,
-      post.css(".postMetaInline-authorLockup > a").text,
+      post.css(".postMetaInline-authorLockup > a")[0].text,
       post.css(".js-actionRecommend .u-baseColor--buttonNormal").text,
       post.css(".postArticle-readMore a").attr("href")
     )
